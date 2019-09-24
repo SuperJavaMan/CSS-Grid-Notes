@@ -6,12 +6,10 @@
             padding: 0;
             margin: 0;
         }
-        
         .format {
             background-color: grey;
             font-weight: bold;
         }
-
         .wrapper {
             /* Говорим что будем использовать grid  */
             display: grid;
@@ -48,7 +46,6 @@
                 "aside content advert"
                 "footer footer footer";
         }
-
         /* Если ширина меньше, чем 800px, то срабатывает этот код
         и структура страницы меняется. В данном случае все блоки
         отображаются в одну колонку, как указано в grid-template-areas
@@ -65,13 +62,11 @@
                 "footer"
             }
         }
-
         .d-inside {
             display: grid;
             grid-template-columns: 2fr 5fr;
             grid-column-gap: 5px;
         }
-
         .d1 {
             /* Задать сколько места будет занимать элемент,
             если представить страницу как квадрат 4х4 (3х3 сектора).
@@ -107,7 +102,6 @@
         }
     </style>
 </header>
-
 <body>
     <div class="wrapper format">
         <div class="d1">
@@ -133,5 +127,4 @@
         </div>
     </div>
 </body>
-
 </html>
