@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .format {
+            background-color: grey;
+            font-weight: bold;
+        }
+
+        .wrapper {
+            /* Говорим что будем использовать grid  */
+            display: grid;
+            /* Задать ширину каждой колонки.
+                через пробел. "fr" - фракция, часть пространства
+                в отношении других элеметов. В данном случае,
+                центральный блок займет 1к px, а крайние между собой
+                поделят остаток поравну
+             */
+            grid-template-columns: 1fr 800px 1fr;
+            /* Задать высоту рядов.
+                minmax(min, max) - функция, позволяет указать
+                минимальный и максимальный размер. 
+                В данном случае для высоты ряда мин=80% от окна,
+                max=авто-высота, чтобы страница растягивалась вниз,
+                если контент не вмещается в минимальное значение
+            */
+            grid-template-rows: 100px minmax(80%, auto) 100px;
+            /* Через функцию можно указать кол-во колон или рядов,
+                если их много например repeat(кол-во повторений, ширина каждого блока)
+             */
+            grid-auto-columns: repeat(3, 1fr);
+            /* Промежутки между колонками и рядами */
+            /* или в одну строку - grid-gap: "rowsGap"px "colsGap"px 
+            */
+            grid-column-gap: 5px;
+            grid-row-gap: 2px;
+            /* Можно задать расположение элементов в сетке таким образом, 
+                а в конкретном блоке в проперти "grid-area: header;"
+                указать необходимое место в сетке
+            */
+            grid-template-areas: 
+                "header header header"
+                "aside content advert"
+                "footer footer footer";
+        }
+
+        /* Если ширина меньше, чем 800px, то срабатывает этот код
+        и структура страницы меняется. В данном случае все блоки
+        отображаются в одну колонку, как указано в grid-template-areas
+         */
+        @media (max-width: 800px) {
+            .wrapper {
+                grid-template-columns: 1fr;
+                grid-template-rows: 50px 100px auto 50px;
+                grid-template-areas: 
+                "header"
+                "aside"
+                "content"
+                "advert"
+                "footer"
+            }
+        }
+
+        .d-inside {
+            display: grid;
+            grid-template-columns: 2fr 5fr;
+            grid-column-gap: 5px;
+        }
+
+        .d1 {
+            /* Задать сколько места будет занимать элемент,
+            если представить страницу как квадрат 4х4 (3х3 сектора).
+            grid-column для изменения по горизонтали и
+            grid-row для изменения по вертикали
+             */
+            /* grid-column: 1/4; */
+
+            /* Установить элемент данного класа на позицию "header" 
+            соответствующей нашей grid-template-areas
+             */
+            grid-area: header;
+            background-color: red;
+        }
+        .d2 {
+            grid-area: aside;
+            background-color: green;
+        }
+        .d3 {
+            grid-area: content;
+            background-color: yellow;
+        }
+        .d4 {
+            grid-area: advert;
+            background-color: blue;
+        }
+        .d5 {
+            grid-area: footer;
+            background-color: orangered;
+        }
+        .d6 {
+            background-color: rgb(6, 58, 6);
+        }
+    </style>
+</header>
+
+<body>
+    <div class="wrapper format">
+        <div class="d1">
+            <p>HEADER</p>
+        </div>
+        <div class="d2">
+            <p>ASIDE</p>
+        </div>
+        <div class="d3 d-inside">
+            <div class="d6">
+                SUBMENU
+            </div>
+            <div class="d6">
+                <p>MAIN</p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscipit labore cum ea odit ipsam modi officiis neque nulla facere eaque illum in, iure accusamus dignissimos sed blanditiis aperiam animi tenetur ullam ad, voluptas perspiciatis nesciunt. Dolorum aliquid nihil voluptate temporibus enim accusamus ex nisi laudantium dolores corrupti eos delectus ratione ad, expedita veritatis cumque labore! Sint, ab enim, expedita eos culpa sit consectetur placeat aliquam atque ex veniam asperiores voluptate? Aut voluptatum doloremque eum quod officia dolorum? Quod totam debitis inventore beatae, exercitationem, tempore nemo doloribus eius tenetur animi suscipit vel recusandae soluta harum minus? Saepe, aut quam. Modi commodi delectus ipsum consectetur temporibus, nesciunt enim labore cumque et natus at, minima voluptatem autem esse quae porro. Dolores laudantium autem porro, enim aperiam obcaecati, accusamus magni omnis rerum error maxime officia voluptate non laboriosam officiis dignissimos ut, commodi ex provident facilis voluptatem aliquid? Officiis ullam corporis repellat? Blanditiis ut incidunt, fuga cum, officia maiores adipisci sint quaerat ad ab odio eaque esse quia totam accusantium iste animi rerum vitae nemo eum quae ipsum! Officiis ipsum molestias doloremque doloribus omnis eum corrupti modi rerum pariatur! Debitis earum pariatur repellendus exercitationem perferendis dicta, reprehenderit error et, sint consequatur officia recusandae expedita unde excepturi praesentium, laboriosam necessitatibus voluptates asperiores deserunt qui consectetur ad? Veniam aliquam, expedita officiis doloribus ex, exercitationem voluptatibus deserunt reprehenderit at, minima rem eum dicta? Sed eius totam, possimus perspiciatis enim aut, voluptate animi accusamus ut ratione vero reiciendis magni quo porro distinctio laborum ad fugit exercitationem vitae. Molestias eveniet ipsam vel, et distinctio vero veritatis minima corrupti consectetur consequatur eos iste quasi? Illum nostrum, eaque, perferendis vero totam fuga reprehenderit ab rem fugit nisi adipisci! Commodi exercitationem culpa perferendis enim suscipit! Suscipit quod illum alias, nulla dignissimos voluptate ad quis ea perferendis aperiam accusantium natus ipsam. Deleniti, sunt quis.
+            </div>
+        </div>
+        <div class="d4">
+            <p>ADVERTISE</p>
+        </div>
+        <div class="d5">
+            <p>FOOTER</p>
+        </div>
+    </div>
+</body>
+
+</html>
